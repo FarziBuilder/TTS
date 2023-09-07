@@ -19,7 +19,14 @@ Procedure:-
 29th Aug:-  
 - datasetmaker.py has been added:- It will create datasets of concat_001.wav and a metadata.csv. Add the concat ones NOT the split ones. This will say Surprise at the start of each sentence, and add in the transciption of each split as well
 - cleaners.py:- [] brackets won't be removed now  
-- Note that the start_audio created by datasetmaker needs to be in the metadata and folder.  
+- Note that the start_audio created by datasetmaker needs to be in the metadata and folder.
+
+6th Sept:-
+- git clone into /home/ec2-user/SageMaker for using additional space
+- first python main.py -> train the base model downloaded for 1-2 epochs -> Once trained, take the latest checkpt and continue path finetune on it.
+- Commands:- CUDA_VISIBLE_DEVICES="0,1,2,3,4,5,6,7" python -m trainer.distribute --script /home/ec2-user/SageMaker/tts-sage/recipes/ljspeech/vits_tts/train_vits.py --restore_path /home/ec2-user/.local/share/tts/tts_models--en--ljspeech--vits/model_file.pth --config_file /home/ec2-user/.local/share/tts/tts_models--en--ljspeech--vits/config.json
+- CUDA_VISIBLE_DEVICES="0,1,2,3,4,5,6,7" python -m trainer.distribute --script /home/ec2-user/tts-sage/recipes/ljspeech/vits_tts/train_vits.py --restore_path /home/ec2-user/tts-sage/recipes/ljspeech/vits_tts/vits_ljspeech-September-04-2023_12+45PM-edeb850/checkpoint_1000022.pth --config_path /home/ec2-user/tts-sage/recipes/ljspeech/vits_tts/vits_ljspeech-September-04-2023_12+45PM-edeb850/config.json
+
 
 ## 🐸Coqui.ai News
 - 📣 [🐶Bark](https://github.com/suno-ai/bark) is now available for inference with uncontrained voice cloning. [Docs](https://tts.readthedocs.io/en/dev/models/bark.html)
